@@ -25,13 +25,13 @@ const ItemCard = ({ item }: Props) => {
         <div>price: {price}</div>
         <div>sale_price: {sale_price}</div>
         <div>
-          <img loading="lazy" width="100px" height="100px" src={image_link} />
+          <img loading="lazy" width="auto" height="100px" src={image_link} />
         </div>
       </div>
       {isOpen && (
         <div className={styles.images}>
           {additional_image_link.map((src) => (
-            <img key={src} src={src} width="100px" height="100px" />
+            <img key={src} src={src} width="auto" height="100px" />
           ))}
         </div>
       )}

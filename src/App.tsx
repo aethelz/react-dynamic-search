@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
-import { data } from "./shared/data";
-import type { Gender } from "./shared/types";
+import data from "./shared/data.json";
+import type { Gender, Item } from "./shared/types";
 import ItemCard from "./ItemCard";
 
 function App() {
@@ -9,12 +9,12 @@ function App() {
   const [genders, setGenders] = useState<Gender[]>([]);
   const items = useMemo(() => {
     if (!filter) return [];
-    return data
+    return (data as Item[])
       .filter(({ title }) => title.toLowerCase().includes(filter.toLowerCase()))
       .filter(({ price, sale_price }) => !onSaleOnly || sale_price < price)
       .filter(({ gender }) => !genders.length || genders.includes(gender))
       .slice(0, 100);
-  }, [data, filter, onSaleOnly, genders]);
+  }, [filter, onSaleOnly, genders]);
 
   return (
     <div>
