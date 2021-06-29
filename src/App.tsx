@@ -1,24 +1,14 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useMemo } from "react";
+import { data } from "./shared/data";
+import ItemCard from "./ItemCard";
 
 function App() {
+  const sliced = useMemo(() => data.slice(0, 100), []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {sliced.map((item) => (
+        <ItemCard key={item.gtin} item={item} />
+      ))}
     </div>
   );
 }

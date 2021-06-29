@@ -1,0 +1,16 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  & > * {
+    margin: 1em;
+  }
+}
+.images {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  & > * {
+    margin: 1em;
+  }
+}
