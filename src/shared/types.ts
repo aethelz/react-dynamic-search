@@ -1,10 +1,10 @@
-// type Gender = 'female' | 'male' | 'unisex';
-type Gender = string | number;
+export type Gender = 'female' | 'male' | 'unisex';
 
 export type Item = {
   title: string;
   gtin: number;
-  gender: Gender;
+  // This field is tainted on purpose, compiler gets angry, so we fallback to any.
+  gender: any;
   sale_price: string;
   price: string;
   image_link: string;
