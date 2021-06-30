@@ -8,14 +8,12 @@ import data from "../shared/data.json";
 
 import Wrapper from "../Wrapper";
 import Grid from "../Grid";
-import StartTyping from "./StartTyping";
 
 function App() {
   const [filter, setFilter] = useState("");
   const [onSaleOnly, setOnSaleOnly] = useState(false);
   const [genders, setGenders] = useState<Gender[]>([]);
 
-  const showGrid = filter !== "";
   const filters: ((item: Item) => boolean)[] = useMemo(
     () => [
       isItem,
@@ -72,8 +70,7 @@ function App() {
       </header>
 
       <main>
-        {!showGrid && <StartTyping />}
-        {showGrid && <Grid data={data as Item[]} filters={filters} />}
+        <Grid data={data as Item[]} filters={filters} />
       </main>
     </Wrapper>
   );
