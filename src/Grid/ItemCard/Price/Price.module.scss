@@ -1,0 +1,7 @@
+.price {
+  white-space: pre;
+}
+.sale {
+  compose: price;
+  color: red;
+}

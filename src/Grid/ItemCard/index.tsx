@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "./ItemCard.module.scss";
+import Price from './Price';
 
 import type { Item } from "../../shared/types";
 
@@ -17,17 +18,18 @@ const ItemCard = ({ item }: Props) => {
     additional_image_link,
   } = item;
   const [isOpen, setIsOpen] = useState(false);
-  const onSale = sale_price < price;
   return (
     <>
       <tr onClick={() => setIsOpen((c) => !c)}>
-        <td>{title}</td>
-        <td>{gtin}</td>
-        <td>{gender}</td>
-        <td className={styles.price}>{price}</td>
         <td>
-          <span className={styles.price}>{sale_price}</span><br />
-          {onSale && <span className={styles.sale}>SALE!</span>}
+          <span className={styles.title}>{title}</span>
+          <br />
+          <span>{gender}</span>
+          <br />
+          <span className={styles.gtin}>{gtin}</span>
+        </td>
+        <td>
+          <Price price={price} sale_price={sale_price} />
         </td>
         <td>
           <img
@@ -41,7 +43,7 @@ const ItemCard = ({ item }: Props) => {
       </tr>
       {isOpen && (
         <tr>
-          <td colSpan={6}>
+          <td colSpan={3}>
             <div className={styles.images}>
               {additional_image_link.map((src) => (
                 <img

@@ -22,16 +22,6 @@ const Grid = ({ data, filters }: Props) => {
 
   return (
     <table className={styles.table}>
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>gtin</th>
-          <th>Gender</th>
-          <th>Price</th>
-          <th>Sale Price</th>
-          <th>Thumbnail</th>
-        </tr>
-      </thead>
       <tbody data-testid="itemContainer">
         {items.map((item) => (
           <ItemCard key={item.gtin} item={item} />

@@ -2,7 +2,7 @@ import { useState, useMemo } from "react";
 import styles from "./App.module.scss";
 
 import type { Gender, Item } from "../shared/types";
-import { isSubstring, isItem } from "../shared/utils";
+import { isSubstring, isItem, itemOnSale } from "../shared/utils";
 
 import data from "../shared/data.json";
 
@@ -12,26 +12,26 @@ import Grid from "../Grid";
 function App() {
   const [filter, setFilter] = useState("");
   const [onSaleOnly, setOnSaleOnly] = useState(false);
-  const [genders, setGenders] = useState<Gender[]>([]);
+  const [selectedGender, setSelectedGender] = useState<Gender | ''>('');
 
   const filters: ((item: Item) => boolean)[] = useMemo(
     () => [
       isItem,
       ({ title }) => isSubstring(title, filter),
-      ({ price, sale_price }) => !onSaleOnly || sale_price < price,
-      ({ gender }) => !genders.length || genders.includes(gender),
+      ({ price, sale_price }) => !onSaleOnly || itemOnSale(price, sale_price),
+      ({ gender }) => !selectedGender || selectedGender === gender,
     ],
-    [filter, onSaleOnly, genders]
+    [filter, onSaleOnly, selectedGender]
   );
 
   return (
     <Wrapper>
       <header className={styles.header}>
         <label>
-          Search Products:
           <input
             type="search"
             placeholder="Search"
+            size={40}
             aria-label="Search through products"
             onChange={({ currentTarget: { value } }) => {
               setFilter(value);
@@ -42,15 +42,12 @@ function App() {
         <label>
           Gender:
           <select
-            value={genders}
-            onChange={({ currentTarget: { selectedOptions } }) => {
-              const value = Array.from(
-                selectedOptions,
-                (option) => option.value
-              ) as Gender[];
-              setGenders(value);
+            value={selectedGender}
+            onChange={({ currentTarget: { value } }) => {
+              setSelectedGender(value as Gender);
             }}
           >
+            <option value="" disabled>Choose gender</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
             <option value="unisex">Unisex</option>
