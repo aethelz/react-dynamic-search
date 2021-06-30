@@ -28,7 +28,7 @@ function App() {
     <Wrapper>
       <header className={styles.header}>
         <label>
-          Search products:
+          Search Products:
           <input
             type="search"
             placeholder="Search"
@@ -40,10 +40,8 @@ function App() {
         </label>
 
         <label>
-          gender:
+          Gender:
           <select
-            multiple={true}
-            size={3}
             value={genders}
             onChange={({ currentTarget: { selectedOptions } }) => {
               const value = Array.from(
@@ -60,7 +58,7 @@ function App() {
         </label>
 
         <label>
-          On sale:
+          On Sale:
           <input
             type="checkbox"
             checked={onSaleOnly}
