@@ -2,6 +2,7 @@ import type { Item } from "../shared/types";
 import { useMemo } from "react";
 import styles from "./Grid.module.scss";
 import ItemCard from "./ItemCard";
+import NothingFound from "./NothingFound";
 
 type Props = {
   data: Item[];
@@ -13,6 +14,8 @@ const Grid = ({ data, filters }: Props) => {
 
     return data.filter((item) => filters.every((f) => f(item))).slice(0, 100);
   }, [filters, data]);
+
+  if (!items.length) return <NothingFound />;
 
   return (
     <div className={styles.wrapper}>

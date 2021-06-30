@@ -2,6 +2,7 @@ import { useState, useMemo } from "react";
 import styles from "./App.module.scss";
 
 import type { Gender, Item } from "../shared/types";
+import { contains } from "../shared/utils";
 
 import data from "../shared/data.json";
 
@@ -16,7 +17,7 @@ function App() {
   const showGrid = filter !== "";
   const filters: ((item: Item) => boolean)[] = useMemo(
     () => [
-      ({ title }) => title.toLowerCase().includes(filter.toLowerCase()),
+      ({ title }) => contains(title, filter),
       ({ price, sale_price }) => !onSaleOnly || sale_price < price,
       ({ gender }) => !genders.length || genders.includes(gender),
     ],
