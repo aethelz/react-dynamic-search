@@ -2,12 +2,13 @@ import { useState, useMemo } from "react";
 import styles from "./App.module.scss";
 
 import type { Gender, Item } from "../shared/types";
-import { contains } from "../shared/utils";
+import { isSubstring, isItem } from "../shared/utils";
 
 import data from "../shared/data.json";
 
 import Wrapper from "../Wrapper";
 import Grid from "../Grid";
+import StartTyping from "./StartTyping";
 
 function App() {
   const [filter, setFilter] = useState("");
@@ -17,7 +18,8 @@ function App() {
   const showGrid = filter !== "";
   const filters: ((item: Item) => boolean)[] = useMemo(
     () => [
-      ({ title }) => contains(title, filter),
+      isItem,
+      ({ title }) => isSubstring(title, filter),
       ({ price, sale_price }) => !onSaleOnly || sale_price < price,
       ({ gender }) => !genders.length || genders.includes(gender),
     ],
@@ -70,6 +72,7 @@ function App() {
       </header>
 
       <main>
+        {!showGrid && <StartTyping />}
         {showGrid && <Grid data={data as Item[]} filters={filters} />}
       </main>
     </Wrapper>

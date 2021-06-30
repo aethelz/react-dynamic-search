@@ -1,12 +1,13 @@
-export type Gender = 'female' | 'male' | 'unisex';
+import { genders } from "./CONSTANTS";
+
+export type Gender = typeof genders[number];
 
 export type Item = {
   title: string;
   gtin: number;
-  // This field is tainted on purpose, compiler gets angry, so we fallback to any.
-  gender: any;
+  gender: Gender;
   sale_price: string;
   price: string;
   image_link: string;
   additional_image_link: string[];
-}
+};

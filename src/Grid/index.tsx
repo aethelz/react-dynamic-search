@@ -1,4 +1,5 @@
 import type { Item } from "../shared/types";
+import { paginationLimit } from "../shared/CONSTANTS";
 import { useMemo } from "react";
 import styles from "./Grid.module.scss";
 import ItemCard from "./ItemCard";
@@ -12,7 +13,9 @@ const Grid = ({ data, filters }: Props) => {
   const items = useMemo(() => {
     if (!filters.length) return [];
 
-    return data.filter((item) => filters.every((f) => f(item))).slice(0, 100);
+    return data
+      .filter((item) => filters.every((f) => f(item)))
+      .slice(0, paginationLimit);
   }, [filters, data]);
 
   if (!items.length) return <NothingFound />;
@@ -23,10 +26,10 @@ const Grid = ({ data, filters }: Props) => {
         <tr>
           <th>Title</th>
           <th>gtin</th>
-          <th>gender</th>
-          <th>price</th>
-          <th>sale price</th>
-          <th>thumbnail</th>
+          <th>Gender</th>
+          <th>Price</th>
+          <th>Sale Price</th>
+          <th>Thumbnail</th>
         </tr>
       </thead>
       <tbody data-testid="itemContainer">
