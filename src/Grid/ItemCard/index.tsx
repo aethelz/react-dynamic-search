@@ -1,4 +1,4 @@
-import type { Item } from "../shared/types";
+import type { Item } from "../../shared/types";
 import { useState } from "react";
 import styles from "./ItemCard.module.scss";
 

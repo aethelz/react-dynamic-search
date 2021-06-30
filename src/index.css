@@ -5,6 +5,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /*
+  This will remove the horizontal scrollbar
+  (created when vertical scrollbar appears, to allow the user to "look under" it).
+   */
+  overflow-x: hidden;
+
 }
 
 code {
