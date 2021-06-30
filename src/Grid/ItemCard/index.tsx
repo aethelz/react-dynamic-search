@@ -28,10 +28,7 @@ const ItemCard = ({ item }: Props) => {
           <br />
           <span className={styles.gtin}>{gtin}</span>
         </td>
-        <td>
-          <Price price={price} sale_price={sale_price} />
-        </td>
-        <td>
+        <td className={styles.item}>
           <img
             loading="lazy"
             alt={title}
@@ -39,6 +36,7 @@ const ItemCard = ({ item }: Props) => {
             height="200px"
             src={image_link}
           />
+          <Price price={price} sale_price={sale_price} />
         </td>
       </tr>
       {isOpen && (

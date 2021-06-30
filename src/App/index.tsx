@@ -29,9 +29,9 @@ function App() {
       <header className={styles.header}>
         <label>
           <input
+            className={styles.search}
             type="search"
             placeholder="Search"
-            size={40}
             aria-label="Search through products"
             onChange={({ currentTarget: { value } }) => {
               setFilter(value);

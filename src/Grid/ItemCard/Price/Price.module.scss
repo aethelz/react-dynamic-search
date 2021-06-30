@@ -1,7 +1,11 @@
-.price {
+.noWrap {
   white-space: pre;
 }
+.boldPrice {
+  composes: noWrap;
+  font-weight: bold;
+}
 .sale {
-  compose: price;
+  composes: boldPrice;
   color: red;
 }

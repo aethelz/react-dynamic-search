@@ -10,10 +10,4 @@ body {
   (created when vertical scrollbar appears, to allow the user to "look under" it).
    */
   overflow-x: hidden;
-
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
 }
