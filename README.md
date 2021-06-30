@@ -14,7 +14,8 @@ s/jpg, /jpg", "/g
 ```
 
 Product thumbnails are fetched on demand using [`<img loading=lazy>`](https://web.dev/browser-level-image-lazy-loading/)<br />
-Offline mode and reliable image caching are implemented via CRA's Service Worker with [tweaks](https://create-react-app.dev/docs/making-a-progressive-web-app/#customization) to support external images.
+Partial offline mode and reliable image caching are implemented via CRA's Service Worker with [tweaks](https://create-react-app.dev/docs/making-a-progressive-web-app/#customization) to support external images.
+This app won't work completely offline due to chunk with JSON data being bigger than CRA's hardwired [cachable size limit](https://github.com/cra-template/pwa/issues/13), but it will keep working offline if chunk was already loaded. 
 
 ## Available Scripts
 
