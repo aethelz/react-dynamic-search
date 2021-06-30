@@ -18,11 +18,23 @@ const Grid = ({ data, filters }: Props) => {
   if (!items.length) return <NothingFound />;
 
   return (
-    <div className={styles.wrapper}>
-      {items.map((item) => (
-        <ItemCard key={item.gtin} item={item} />
-      ))}
-    </div>
+    <table className={styles.table}>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>gtin</th>
+          <th>gender</th>
+          <th>price</th>
+          <th>sale price</th>
+          <th>thumbnail</th>
+        </tr>
+      </thead>
+      <tbody data-testid="itemContainer">
+        {items.map((item) => (
+          <ItemCard key={item.gtin} item={item} />
+        ))}
+      </tbody>
+    </table>
   );
 };
 

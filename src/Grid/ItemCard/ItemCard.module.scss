@@ -1,16 +1,14 @@
-.wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  & > * {
-    margin: 1em;
-  }
+.sale {
+  color: red;
+}
+.price {
+  white-space: pre;
 }
 .images {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
   & > * {
-    margin: 1em;
+    margin: 0.5rem;
   }
 }

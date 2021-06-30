@@ -1,6 +1,7 @@
-import type { Item } from "../../shared/types";
 import { useState } from "react";
 import styles from "./ItemCard.module.scss";
+
+import type { Item } from "../../shared/types";
 
 type Props = {
   item: Item;
@@ -16,24 +17,44 @@ const ItemCard = ({ item }: Props) => {
     additional_image_link,
   } = item;
   const [isOpen, setIsOpen] = useState(false);
+  const onSale = sale_price < price;
   return (
     <>
-      <div className={styles.wrapper} onClick={() => setIsOpen((c) => !c)}>
-        <div>Title: {title}</div>
-        <div>gtin: {gtin}</div>
-        <div>gender: {gender}</div>
-        <div>price: {price}</div>
-        <div>sale_price: {sale_price}</div>
-        <div>
-          <img loading="lazy" width="auto" height="100px" src={image_link} />
-        </div>
-      </div>
+      <tr onClick={() => setIsOpen((c) => !c)}>
+        <td>{title}</td>
+        <td>{gtin}</td>
+        <td>{gender}</td>
+        <td className={styles.price}>{price}</td>
+        <td>
+          <span className={styles.price}>{sale_price}</span><br />
+          {onSale && <span className={styles.sale}>SALE!</span>}
+        </td>
+        <td>
+          <img
+            loading="lazy"
+            alt={title}
+            width="auto"
+            height="200px"
+            src={image_link}
+          />
+        </td>
+      </tr>
       {isOpen && (
-        <div className={styles.images}>
-          {additional_image_link.map((src) => (
-            <img key={src} src={src} width="auto" height="100px" />
-          ))}
-        </div>
+        <tr>
+          <td colSpan={6}>
+            <div className={styles.images}>
+              {additional_image_link.map((src) => (
+                <img
+                  alt={title}
+                  key={src}
+                  src={src}
+                  width="auto"
+                  height="200px"
+                />
+              ))}
+            </div>
+          </td>
+        </tr>
       )}
     </>
   );
