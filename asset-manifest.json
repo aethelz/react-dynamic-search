@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/react-dynamic-search/static/css/main.df53f675.chunk.css",
-    "main.js": "/react-dynamic-search/static/js/main.38501456.chunk.js",
-    "main.js.map": "/react-dynamic-search/static/js/main.38501456.chunk.js.map",
+    "main.css": "/react-dynamic-search/static/css/main.eecddaa3.chunk.css",
+    "main.js": "/react-dynamic-search/static/js/main.916139b6.chunk.js",
+    "main.js.map": "/react-dynamic-search/static/js/main.916139b6.chunk.js.map",
     "runtime-main.js": "/react-dynamic-search/static/js/runtime-main.ab817ded.js",
     "runtime-main.js.map": "/react-dynamic-search/static/js/runtime-main.ab817ded.js.map",
     "static/js/2.86e30e96.chunk.js": "/react-dynamic-search/static/js/2.86e30e96.chunk.js",
@@ -12,13 +12,13 @@
     "index.html": "/react-dynamic-search/index.html",
     "service-worker.js": "/react-dynamic-search/service-worker.js",
     "service-worker.js.map": "/react-dynamic-search/service-worker.js.map",
-    "static/css/main.df53f675.chunk.css.map": "/react-dynamic-search/static/css/main.df53f675.chunk.css.map",
+    "static/css/main.eecddaa3.chunk.css.map": "/react-dynamic-search/static/css/main.eecddaa3.chunk.css.map",
     "static/js/2.86e30e96.chunk.js.LICENSE.txt": "/react-dynamic-search/static/js/2.86e30e96.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.ab817ded.js",
     "static/js/2.86e30e96.chunk.js",
-    "static/css/main.df53f675.chunk.css",
-    "static/js/main.38501456.chunk.js"
+    "static/css/main.eecddaa3.chunk.css",
+    "static/js/main.916139b6.chunk.js"
   ]
 }
