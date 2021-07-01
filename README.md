@@ -17,6 +17,11 @@ Product thumbnails are fetched on demand using [`<img loading=lazy>`](https://we
 Partial offline mode and reliable image caching are implemented via CRA's Service Worker with [tweaks](https://create-react-app.dev/docs/making-a-progressive-web-app/#customization) to support external images.
 This app won't work completely offline due to chunk with JSON data being bigger than CRA's hardwired [cachable size limit](https://github.com/cra-template/pwa/issues/13), but it will keep working offline if chunk was already loaded. 
 
+## Possible Improvements
+Most problems in this app come from using huge static JSON database instead of a paginated backend endpoint.
+It might also be possible to split JSON into chunks (for example, by first letter in an item title).
+Another good idea would be to use something like [react-window](https://github.com/bvaughn/react-window) to limit render work.
+
 ## Available Scripts
 
 This is a [CRA](https://create-react-app.dev/) project. In the project directory, you can run:
