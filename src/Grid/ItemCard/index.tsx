@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "./ItemCard.module.scss";
-import Price from './Price';
+import Price from "./Price";
 
 import type { Item } from "../../shared/types";
 
@@ -28,20 +28,22 @@ const ItemCard = ({ item }: Props) => {
           <br />
           <span className={styles.gtin}>{gtin}</span>
         </td>
-        <td className={styles.item}>
-          <img
-            loading="lazy"
-            alt={title}
-            width="auto"
-            height="200px"
-            src={image_link}
-          />
-          <Price price={price} sale_price={sale_price} />
+        <td>
+          <div className={styles.item}>
+            <img
+              loading="lazy"
+              alt={title}
+              width="100%"
+              height="auto"
+              src={image_link}
+            />
+            <Price price={price} sale_price={sale_price} />
+          </div>
         </td>
       </tr>
       {isOpen && (
         <tr>
-          <td colSpan={3}>
+          <td colSpan={2}>
             <div className={styles.images}>
               {additional_image_link.map((src) => (
                 <img
