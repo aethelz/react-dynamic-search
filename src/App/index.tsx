@@ -2,9 +2,8 @@ import { useState, useMemo } from "react";
 import styles from "./App.module.scss";
 
 import type { Gender, Item } from "../shared/types";
-import { isSubstring, isItem, itemOnSale } from "../shared/utils";
-
-import data from "../shared/data.json";
+import { isSubstring, itemOnSale } from "../shared/utils";
+import { dataSanitized } from "../shared/CONSTANTS";
 
 import Wrapper from "../Wrapper";
 import Grid from "../Grid";
@@ -12,11 +11,10 @@ import Grid from "../Grid";
 function App() {
   const [filter, setFilter] = useState("");
   const [onSaleOnly, setOnSaleOnly] = useState(false);
-  const [selectedGender, setSelectedGender] = useState<Gender | ''>('');
+  const [selectedGender, setSelectedGender] = useState<Gender | "">("");
 
   const filters: ((item: Item) => boolean)[] = useMemo(
     () => [
-      isItem,
       ({ title }) => isSubstring(title, filter),
       ({ price, sale_price }) => !onSaleOnly || itemOnSale(price, sale_price),
       ({ gender }) => !selectedGender || selectedGender === gender,
@@ -47,7 +45,9 @@ function App() {
               setSelectedGender(value as Gender);
             }}
           >
-            <option value="" disabled>Choose gender</option>
+            <option value="" disabled>
+              Choose gender
+            </option>
             <option value="male">Male</option>
             <option value="female">Female</option>
             <option value="unisex">Unisex</option>
@@ -67,7 +67,7 @@ function App() {
       </header>
 
       <main>
-        <Grid data={data as Item[]} filters={filters} />
+        <Grid data={dataSanitized} filters={filters} />
       </main>
     </Wrapper>
   );
